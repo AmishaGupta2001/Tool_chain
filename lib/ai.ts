@@ -660,12 +660,13 @@ export function statusFor(error: AIError) {
 }
 
 /** Removes markdown formatting (**bold**, *italic*, # headings, `code`) from model output. */
+/** Removes markdown formatting (**bold**, *italic*, # headings, `code`) from model output. */
 export function stripMarkdown(text: string) {
   return text
       .replace(/^\s{0,3}#{1,6}\s+/gm, "")
       .replace(/^\s*\*\s+/gm, "- ")
-      .replace(/\*\*(.+?)\*\*/gs, "$1")
-      .replace(/__(.+?)__/gs, "$1")
+      .replace(/\*\*([\s\S]+?)\*\*/g, "$1")
+      .replace(/__([\s\S]+?)__/g, "$1")
       .replace(/(^|[\s(])\*(?!\s)([^*\n]+?)\*(?=[\s).,!?:;]|$)/g, "$1$2")
       .replace(/`([^`]+)`/g, "$1")
       .trim();
