@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function UnauthorizedPage(){return <main className="min-h-screen grid place-items-center p-6"><div className="panel max-w-md text-center"><div className="text-4xl mb-4">🔒</div><h1 className="text-2xl font-bold">Access restricted</h1><p className="muted mt-2">This tool is available to superadmins only.</p><Link className="btn btn-primary mt-6 inline-flex" href="/login">Back to sign in</Link></div></main>}
